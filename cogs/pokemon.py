@@ -8,7 +8,7 @@ spawn=False
 catch=False
 
 def get_pokemon(id=None,shiny=""):
-    pokemon_id=id if id is not None else random.randint(1, 1010)
+    pokemon_id=id.lower() if id is not None else random.randint(1, 1010)
     url = f'https://pokeapi.co/api/v2/pokemon/{pokemon_id}/'
     try:
         response = requests.get(url).json()
