@@ -12,7 +12,7 @@ class commands_(commands.Cog):
         embed.add_field(name="!pokemon {pokemon}", value="Info on a Pokemon", inline=False)
         embed.add_field(name="!followers", value="Brick's total followers on flickr", inline=False)
         embed.add_field(name="!socials", value="Links to Brick's socials", inline=False)
-        embed.add_field(name="!pokemon_commands", value="Information on all Pokemon Commands", inline=False)
+        embed.add_field(name="!pokemon_commands", value="Info on all Pokemon Commands", inline=False)
         await ctx.send(embed=embed)
 
 def setup(client):
