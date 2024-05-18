@@ -18,10 +18,13 @@ def get_pokemon(id=None,shiny=""):
     ivs=random.randint(0,100)
     level=random.randint(1,64)
     moves=[]
-    while len(moves)<4:
-      num=random.randrange(len(response['moves']))
-      if response['moves'][num]['move']['name'] not in moves:
-        moves.append(response['moves'][num]['move']['name'])
+    try:
+        while len(moves)<4:
+          num=random.randrange(len(response['moves']))
+          if response['moves'][num]['move']['name'] not in moves:
+            moves.append(response['moves'][num]['move']['name'])
+    except:
+        pass
     pokemon_natures = ["Adamant", "Bashful", "Bold", "Brave", "Calm", "Careful", "Docile", "Gentle","Hardy", "Hasty", "Impish", "Jolly", "Lax", "Lonely", "Mild", "Modest", "Naive", "Naughty", "Quiet", "Quirky", "Rash", "Relaxed", "Sassy", "Serious", "Timid"]
     nature=random.choice(pokemon_natures)
     shinyroll=0 if shiny=="shiny" else random.randrange(0,8)
@@ -140,7 +143,11 @@ class pokemon(commands.Cog):
                         embed.set_thumbnail(url=pokemon[6])
                         embed.add_field(name="",value=f"Nature: {pokemon[5]}",inline=False)
                         moves=eval(pokemon[4])
-                        embed.add_field(name="", value="Moves:\n:white_small_square:"+moves[0].title()+"\n:white_small_square:"+moves[1].title()+"\n:white_small_square:"+moves[2].title()+"\n:white_small_square:"+moves[3].title(),inline=False)
+                        try:
+                            embed.add_field(name="", value="Moves:\n:white_small_square:"+moves[0].title()+"\n:white_small_square:"+moves[1].title()+"\n:white_small_square:"+moves[2].title()+"\n:white_small_square:"+moves[3].title(),inline=False)
+                            
+                        except:
+                            embed.add_field(name="", value="Moves Unvailable",inline=False)
                         embed.set_footer(text=author.name, icon_url=author.avatar)
                         break
                 if result:
@@ -160,8 +167,8 @@ class pokemon(commands.Cog):
         embed=nextcord.Embed(title="Pokemon Commands", color=nextcord.Colour.blue())
         embed.add_field(name="!wild", value="Spawns a random pokemon", inline=False)
         embed.add_field(name="!catch", value="Throw a ball at the active wild pokemon", inline=False)
-        embed.add_field(name="!box {page}", value="View your pokemon", inline=False)
-        embed.add_field(name="!reset", value="Delete all your pokemon", inline=False)
+        embed.add_field(name="!box {page}", value="View your Pokemon", inline=False)
+        embed.add_field(name="!reset", value="Delete all your Pokemon", inline=False)
         embed.add_field(name="!info {id}", value="View a specific pokemon's info", inline=False)
         await ctx.send(embed=embed)
 
