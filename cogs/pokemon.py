@@ -160,8 +160,8 @@ class pokemon(commands.Cog):
         embed=nextcord.Embed(title="Pokemon Commands", color=nextcord.Colour.blue())
         embed.add_field(name="!wild", value="Spawns a random pokemon", inline=False)
         embed.add_field(name="!catch", value="Throw a ball at the active wild pokemon", inline=False)
-        embed.add_field(name="!box {page}", value="View your Pokemon", inline=False)
-        embed.add_field(name="!reset", value="Delete all your Pokemon", inline=False)
+        embed.add_field(name="!box {page}", value="View your pokemon", inline=False)
+        embed.add_field(name="!reset", value="Delete all your pokemon", inline=False)
         embed.add_field(name="!info {id}", value="View a specific pokemon's info", inline=False)
         await ctx.send(embed=embed)
 
