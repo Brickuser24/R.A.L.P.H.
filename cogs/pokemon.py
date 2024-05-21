@@ -47,7 +47,7 @@ class pokemon(commands.Cog):
         else:
             wildmon=get_pokemon()
         if wildmon is not None:
-            if wildmon[2]==True:
+            if wildmon[2] is True:
                 embed = nextcord.Embed(title=f"A wild :sparkles: {wildmon[0]} appeared!", color=nextcord.Colour.blue(), description="Use !catch to throw a ball!")
             else:
                 embed = nextcord.Embed(title=f"A wild {wildmon[0]} appeared!", color=nextcord.Colour.blue(), description="Use !catch to throw a ball!")
