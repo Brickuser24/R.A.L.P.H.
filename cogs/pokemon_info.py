@@ -32,6 +32,7 @@ class pokemon_info(commands.Cog):
       try:
         url = "https://pokeapi.co/api/v2/pokemon/" + pokemon.lower()
         data = requests.get(url).json()
+        name = data['name'].title()
         image_url = data['sprites']['front_default']
         base_stats = {}
         for stat in data["stats"]:
@@ -42,7 +43,7 @@ class pokemon_info(commands.Cog):
           for coverage in coverage_options[type]:
             if coverage not in coverages:
               coverages.append(coverage)
-        embed=nextcord.Embed(title=f"{pokemon.capitalize()} Info", color=nextcord.Colour.blue())
+        embed=nextcord.Embed(title=f"{name} Info", color=nextcord.Colour.blue())
         embed.set_thumbnail(url=image_url)
         embed.add_field(name="Type",value=f"{types}",inline=False)
         basestats={"Hp": base_stats['hp'],"Atk": base_stats['attack'], "Def": base_stats['defense'], "SpAtk": base_stats['special-attack'], "SpDef": base_stats['special-defense'], "Spe": base_stats['speed']}
