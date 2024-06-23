@@ -103,7 +103,7 @@ class pokemon(commands.Cog):
         if os.path.exists(filepath):
             with open(f"cogs/pokemon_data/{author.id}.csv", "r",newline="") as f:
                 r=csv.reader(f)
-                cr=[pokemon for pokemon in r]
+                cr=list(r)
                 embed = nextcord.Embed(title=f"Your Pokemon ({len(cr)})", color=nextcord.Colour.blue())
                 p=(page-1)*10
                 try:
@@ -132,7 +132,7 @@ class pokemon(commands.Cog):
         if os.path.exists(filepath):
             with open(f"cogs/pokemon_data/{author.id}.csv", "r",newline="") as f:
                 r=csv.reader(f)
-                cr=[pokemon for pokemon in r]
+                cr=list(r)
                 for pokemon in cr:
                     if pokemon[-1]==str(id):
                         result=True
